@@ -179,9 +179,10 @@ for (i in 1:lirow){
 
 # != == < > & |
 ?'&'
-  
 
 ### while :break, next
+### if :if,else if, else
+
   x <- 100
 l <- ""
 i <- 1

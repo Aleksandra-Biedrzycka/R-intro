@@ -217,6 +217,7 @@ podaj("Ola")
 
 podaj1 <- function(){
   line<-readline(prompt="Podaj swoje imie:")
+  return(line)
   print(line)
 }
 podaj1()

@@ -34,6 +34,9 @@ class(x)
 is.numeric(x)
 is.vector(x)
 
+
+### sekwencja
+
 ?seq
 
 x[1]
@@ -43,6 +46,8 @@ x2<-seq(1:100)
 x2
 x2<-seq(20,10, by=-1)
 x3<-seq(11,20)
+
+### wektor
 
 ?vector
 
@@ -73,7 +78,7 @@ class(c(znakowy,vm))  # znakowy
 
 # The atomic modes are "logical", "integer", "numeric" (synonym "double"), "complex", "character" and "raw".
 
-# lista
+### lista
 
 lista <- list(c("a","b","c"),c(1,2,3),c(TRUE,FALSE))
 lista        
@@ -85,6 +90,8 @@ vm[wektor_flaga]
 vm[vm>0]
 lis_flaga <- lista[[2]]>0
 lista[[2]][lista[[2]]!=2]
+
+### macierz
 
 # wektor jako macierz
 
@@ -125,7 +132,7 @@ as.numeric(plecFactor)
 plecFactor2 <- factor(plec, levels = c("m","k"))
 
 
-# ramka danych
+### ramka danych
 
 id <- c(1,2,3)
 imie <- c("jan","kamila","arek")
@@ -150,6 +157,9 @@ dflrow <-data.frame(numer=4, imie='michal', plec='m')
 ram <- rbind(ram,dflrow)
 length(ram$numer)
 length(ram)
+
+### for
+
 lirow <-nrow(ram)
 
 for (i in 1:lirow){
@@ -170,6 +180,8 @@ for (i in 1:lirow){
 # != == < > & |
 ?'&'
   
+
+### while :break, next
   x <- 100
 l <- ""
 i <- 1
@@ -189,6 +201,8 @@ i <-1
 while (i<lirow) {
   print(i)
 }
+
+### funkcja
 
 podajImie <- function(){
   print("Witaj ")
@@ -214,6 +228,8 @@ podaj2 <- function(sep=","){
   print(paste0("pies", podz[[1]] [2]))
 }
 podaj2()
+
+### read csv
 
 ?read.csv
 ?read.table

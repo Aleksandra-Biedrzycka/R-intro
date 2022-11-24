@@ -67,6 +67,27 @@ rPearsona(vm1,vm2)
 
 ###
 
+wpisz <- function(sep=",",ile=1){
+  linec <-readline(prompt=paste0("Podaj liczbę kolumn (większą od 1 liczbę całkowitą): "))
+  ncol <- as.integer(linec)
+  line <- readline(prompt=paste0("Podaj nazwy kolumn oddzielone przecinkiem: ",sep,","))
+  podz <- strsplit(line,sep)
+  liner <-readline(prompt=paste0("Podaj liczbę wierszy (większą od 1 liczbę całkowitą): "))
+  nrow <- as.integer(linec)
+  lporz=1
+  ram <- data.frame(lporz)
+  for (i in 1:nrow){
+    for (j in 1:ncol){
+      rowstr <-readline(prompt=paste0("Podaj wartość (liczbową) kolumny: ", podz[[i]][j]))
+      valu <- as.double(rowstr)
+      ram[podz[[i]][j]] <- valu
+    }  
+  }
+  ram <- as.data.frame(ram)
+  print(ram)
+}
+wpisz()
+
 ###
 
 

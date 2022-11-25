@@ -98,11 +98,64 @@ wpisz()
 #iczbami R wstawi przed nazwy X. Funkcję przetestuj dla katalogu smogKrakow.zip.
 #Wykonując obliczenia pomiń brakujące wartości.
 
+###
+dttest1 <- read.csv("./smogKrakow2/smogKrakow2/0012017.csv")
+dttest2 <- read.csv("./smogKrakow2/smogKrakow2/0022017.csv")
+dttest3 <- read.csv("./smogKrakow2/smogKrakow2/0032017.csv")
+dttest4 <- read.csv("./smogKrakow2/smogKrakow2/0042017.csv")
+dttest5 <- read.csv("./smogKrakow2/smogKrakow2/0052017.csv")
+dttest6 <- read.csv("./smogKrakow2/smogKrakow2/0062017.csv")
+dttest7 <- read.csv("./smogKrakow2/smogKrakow2/0072017.csv")
+dttest8 <- read.csv("./smogKrakow2/smogKrakow2/0082017.csv")
+dttest9 <- read.csv("./smogKrakow2/smogKrakow2/0092017.csv")
+dttest10 <- read.csv("./smogKrakow2/smogKrakow2/0102017.csv")
+dttest11 <- read.csv("./smogKrakow2/smogKrakow2/0112017.csv")
+dttest12 <- read.csv("./smogKrakow2/smogKrakow2/0122017.csv")
+View(dttest1)
+
+na.omit(dttest1['x3_pressure'])
+mean(dttest2$x3_pressure,na.rm = TRUE)
+
+
+na.omit(myDataFrame[[nazwaKolumny]])
+
+l <-readline(prompt=paste0("Co chcesz policzyć? Wpisz mean, median, min lub max."))
+
+l<-"mean"
+if ( l=="mean"){
+  print(l)
+}
+if(l=="median"){
+  print(l)
+}
+if(l=="min"){
+  print(l)
+}
+if(l=="max"){
+  print(l)
+}
+
+returnTest<- function(){
+  dodatkowa<-""
+  l<-"mean"
+  if ( l=="mean"){
+    dodatkowa<-l
+  }
+  else if(l=="median"){
+    dodatkowa<-l
+  }
+  dodatkowa
+}
+
+returnTest()
+
+mean(daneDF$wiek)
+median(daneDF$wiek)
+max(daneDF$wiek)
+min(daneDF$wiek)
+summary(daneDF)
 
 ###
-
-###
-
 
 # liczZplikow <- function(sciezka,nazwaKolumny,jakaFunkcja="mean",DlaIluPlikow=1){ 
 #   

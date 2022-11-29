@@ -67,6 +67,9 @@ rPearsona(vm1,vm2)
 
 ###
 
+# Tu zakładam, że jeżeli użytkownik źle wpisze dane, to komunikatem o błędzie,
+# będzie komunikat z konsoli, po próbie wykonania wypisz()
+
 wpisz <- function(sep=",",ile=1){
   linec <-readline(prompt=paste0("Podaj liczbę kolumn (większą od 1 liczbę całkowitą): "))
   ncol <- as.integer(linec)
@@ -86,6 +89,7 @@ wpisz <- function(sep=",",ile=1){
   ram <- as.data.frame(ram)
   print(ram)
 }
+
 wpisz()
 
 ###
@@ -99,77 +103,49 @@ wpisz()
 #Wykonując obliczenia pomiń brakujące wartości.
 
 ###
-dttest1 <- read.csv("./smogKrakow2/smogKrakow2/0012017.csv")
-dttest2 <- read.csv("./smogKrakow2/smogKrakow2/0022017.csv")
-dttest3 <- read.csv("./smogKrakow2/smogKrakow2/0032017.csv")
-dttest4 <- read.csv("./smogKrakow2/smogKrakow2/0042017.csv")
-dttest5 <- read.csv("./smogKrakow2/smogKrakow2/0052017.csv")
-dttest6 <- read.csv("./smogKrakow2/smogKrakow2/0062017.csv")
-dttest7 <- read.csv("./smogKrakow2/smogKrakow2/0072017.csv")
-dttest8 <- read.csv("./smogKrakow2/smogKrakow2/0082017.csv")
-dttest9 <- read.csv("./smogKrakow2/smogKrakow2/0092017.csv")
-dttest10 <- read.csv("./smogKrakow2/smogKrakow2/0102017.csv")
-dttest11 <- read.csv("./smogKrakow2/smogKrakow2/0112017.csv")
-dttest12 <- read.csv("./smogKrakow2/smogKrakow2/0122017.csv")
-View(dttest1)
 
-na.omit(dttest1['x3_pressure'])
-mean(dttest2$x3_pressure,na.rm = TRUE)
-
-
-na.omit(myDataFrame[[nazwaKolumny]])
-
-l <-readline(prompt=paste0("Co chcesz policzyć? Wpisz mean, median, min lub max."))
-
-l<-"mean"
-if ( l=="mean"){
-  print(l)
-}
-if(l=="median"){
-  print(l)
-}
-if(l=="min"){
-  print(l)
-}
-if(l=="max"){
-  print(l)
+pobierzDane <- function(sciezka,nazwaKolumny,jakaFunkcja="mean",DlaIluPlikow=1){ 
+  sciezka <-readline(prompt=paste0("Podaj nazwę ścieżki: "))
+  #  ./smogKrakow2/smogKrakow2/
+  nazwaKolumny <-readline(prompt=paste0("Podaj nazwę kolumny: "))
+  #  X3_pressure
+  jakaFunkcja <- readline(prompt=paste0("Co chcesz policzyć? Wpisz mean, median, min lub max."))
+  #  mean
+  DlaIluPlikow <- readline(prompt=paste0("Ile plików chcesz użyć do obliczeń? (Podaj liczbę całkowitą pomiędzy 1 a 12"))
+  #  3
 }
 
-returnTest<- function(){
-  dodatkowa<-""
-  l<-"mean"
-  if ( l=="mean"){
-    dodatkowa<-l
+liczZplikow <- function(sciezka,nazwaKolumny,jakaFunkcja="mean",DlaIluPlikow=1){ 
+  lista <- list(list.files(sciezka))
+  sc1 <- paste(sciezka,lista[[1]][1],sep="")
+  for (i in 1:DlaIluPlikow) {
+    lista <- list(list.files(sciezka))
+    scplik <- paste(sciezka,lista[[1]][i],sep="")
+    wartosci  <- read.csv(scplik)
+    wartosci <- wartosci[nazwaKolumny]
+    wartosci.strings=c("","NA")
+    na.omit(wartosci[[nazwaKolumny]])
+    if ( i > 1) {
+      wartosci <- rbind(dfa,wartosci)
+      dfa <- wartosci
+      }
   }
-  else if(l=="median"){
-    dodatkowa<-l
+  if(jakaFunkcja =="mean"){
+    print(mean(wartosci,na.rm = TRUE))
   }
-  dodatkowa
-}
+  if(jakaFunkcja=="median"){
+    print(median(wartosci,na.rm = TRUE))
+  }
+  if(jakaFunkcja=="min"){
+    print(min(wartosci,na.rm = TRUE))
+  }
+  if(jakaFunkcja=="max"){
+    print(max(wartosci,na.rm = TRUE))
+  }
+  }
 
-returnTest()
-
-mean(daneDF$wiek)
-median(daneDF$wiek)
-max(daneDF$wiek)
-min(daneDF$wiek)
-summary(daneDF)
+pobierzDane()
+jakaFunkcja="max"
+liczZplikow(sciezka,nazwaKolumny,jakaFunkcja,DlaIluPlikow)
 
 ###
-
-# liczZplikow <- function(sciezka,nazwaKolumny,jakaFunkcja="mean",DlaIluPlikow=1){ 
-#   
-#   #...
-#   
-# }
-# 
-# Lista plików w katalogu: 
-#   
-#   list.files(sciezka)
-# 
-# Omijanie na : na.omit(myDataFrame[[nazwaKolumny]])
-# Do złączania stringów: 
-#   
-#   paste("string1","string2",sep="TU WSTAW SEPARATOR")
-# Gdy mamy, rózne oznaczenia NA w plikach możemy wykorzystać ( w tym wypadku pusty znak i NA:
-#                                                                na.strings=c("","NA")
